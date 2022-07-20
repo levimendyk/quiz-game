@@ -28,7 +28,7 @@ GIVEN I am taking a code quiz
 <li>THEN I can save my initials and score</li>
 </ul>
 
-[Deployed Site](placeholder.com)
+[Deployed Site](https://levimendyk.github.io/quiz-game/)
 
 Contribution guidelines for this project
-<img src="" alt="" />
+<img src="./assets/images/quiz-game-capture.png" alt="the quiz game screenshot" />
