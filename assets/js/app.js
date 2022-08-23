@@ -4,14 +4,56 @@ var quizContainer = document.querySelector(".quiz-container");
 var questionIndex = 0;
 var questionTitleEl = document.querySelector("#question");
 var choicesContainerEl = document.querySelector("#choices");
+var timerContainer = document.getElementById("timer-container");
+var endGameContainer = document.querySelector(".end-game");
+
+var score = 0;
+var time = 100;
 
 startBtn.addEventListener("click", function () {
   startContainer.classList.add("hide");
   quizContainer.classList.remove("hide");
   createQuestion();
+  startTimer();
 });
 
+function startTimer() {
+  timerContainer.textContent = time;
+  var timer = setInterval(() => {
+    if (time === 0 || questionIndex === questions.length) {
+      clearInterval(timer);
+      endGame();
+      return;
+    }
+    time--;
+    timerContainer.textContent = time;
+  }, 1000);
+}
+
+function endGame() {
+  console.log("game over");
+  quizContainer.classList.add("hide");
+  endGameContainer.classList.remove("hide");
+  document.querySelector(".end-game-btn").addEventListener("click", () => {
+    var user = {
+      name: document.getElementById("username").value,
+      finalScore: score,
+    };
+
+    var storage = JSON.parse(localStorage.getItem("highscores"));
+    if (storage === null) {
+      storage = [];
+    }
+    storage.push(user);
+    localStorage.setItem("highscores", JSON.stringify(storage));
+    window.location.href = "highscores.html";
+  });
+}
+
 function createQuestion() {
+  if (questionIndex === questions.length) {
+    return;
+  }
   var currentQuestion = questions[questionIndex];
   questionTitleEl.textContent = currentQuestion.question;
   choicesContainerEl.innerHTML = "";
@@ -20,48 +62,52 @@ function createQuestion() {
     var buttonEl = document.createElement("button");
     buttonEl.textContent = choice;
     choicesContainerEl.appendChild(buttonEl);
+    choicesContainerEl.addEventListener("click", checkAnswer);
   }
 }
 
-choicesContainerEl.addEventListener("click", checkAnswer);
-
 // Need to figure out how to click on the button and get the value of the button you clicked on
-function checkAnswer() {
+function checkAnswer(e) {
+  console.log(questionIndex);
+  if (e.target.textContent === questions[questionIndex].answer) {
+    score += 20;
+    console.log("correct");
+  } else {
+    time -= 20;
+    console.log("incorrect");
+  }
   questionIndex++;
   createQuestion();
 }
 
 var questions = [
   {
-    question: "Commonly used data types DO NOT include:",
+    question: "1Commonly used data types DO NOT include:",
     choices: ["Strings", "Booleans", "Alerts", "Numbers"],
     answer: "Alerts",
   },
   {
-    question: "Commonly used data types DO NOT include:",
+    question: "2Commonly used data types DO NOT include:",
     choices: ["Strings", "Booleans", "Alerts", "Numbers"],
-    answer: "Alerts",
+    answer: "Strings",
   },
   {
-    question: "Commonly used data types DO NOT include:",
+    question: "3Commonly used data types DO NOT include:",
     choices: ["Strings", "Booleans", "Alerts", "Numbers"],
-    answer: "Alerts",
+    answer: "Booleans",
   },
   {
-    question: "Commonly used data types DO NOT include:",
+    question: "4Commonly used data types DO NOT include:",
     choices: ["Strings", "Booleans", "Alerts", "Numbers"],
-    answer: "Alerts",
+    answer: "Numbers",
   },
   {
-    question: "Commonly used data types DO NOT include:",
+    question: "5Commonly used data types DO NOT include:",
     choices: ["Strings", "Booleans", "Alerts", "Numbers"],
     answer: "Alerts",
   },
 ];
 
-for (let index = 0; index < array.length; index++) {
-  const element = array[index];
-}
 // if answer is correct say Correct!
 // if answer is wrong say Wrong!
 // keep track of score

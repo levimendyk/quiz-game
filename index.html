@@ -10,7 +10,7 @@
   <body>
     <header>
       <nav>
-        <a href="">View Highscores</a>
+        <a href="highscores.html">View Highscores</a>
       </nav>
     </header>
     <div class="start-container">
@@ -23,8 +23,14 @@
       <button id="startbtn">Start Quiz</button>
     </div>
     <div class="quiz-container hide">
+      <p id="timer-container"></p>
       <h2 id="question"></h2>
       <div id="choices"></div>
+    </div>
+
+    <div class="end-game hide">
+      <input placeholder="Enter Your Name" id="username" />
+      <button class="end-game-btn">SUBMIT</button>
     </div>
     <!-- <div class="quiz-container hide">
       <h2 id="question">
