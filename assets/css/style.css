@@ -10,15 +10,48 @@
 nav {
     background-color: lightgray;
     font-size: 20px;
+    display: block;
+    height: 50px;
+    margin: 10px auto;
+    width: 1000px;
+    padding: 10px;
+    border-radius: 10px;
 }
 
 .start-container {
     background-color: aqua;
     display: block;
-    margin-left: 175px;
+    margin:  10px auto;
+    width: 1000px;
+    padding: 10px;
+    border-radius: 10px;
 }
 
 .quiz-container {
-    background-color: gray;
+    background-color: rgb(129, 125, 125);
     color: black;
+    display: block;
+    margin:  20px auto;
+    width: 1000px;
+    padding: 10px;
+    border-radius: 10px;
 }
+
+.end-game {
+    background-color: rgb(129, 125, 125);
+    color: black;
+    display: block;
+    margin: auto;
+    width: 1000px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+button {
+    background-color: purple;
+    color: white;
+    border: 0;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10px;
+  }
