@@ -17,3 +17,8 @@ nav {
     display: block;
     margin-left: 175px;
 }
+
+.quiz-container {
+    background-color: gray;
+    color: black;
+}
