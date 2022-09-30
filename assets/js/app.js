@@ -6,8 +6,11 @@ var questionTitleEl = document.querySelector("#question");
 var choicesContainerEl = document.querySelector("#choices");
 var timerContainer = document.getElementById("timer-container");
 var endGameContainer = document.querySelector(".end-game");
+var scoreContainer = document.getElementById("current-score");
+var highscoresContainer = document.getElementById("highscores-container");
 
 var score = 0;
+var highscoresBoard = [];
 var time = 100;
 
 startBtn.addEventListener("click", function () {
@@ -70,8 +73,10 @@ function createQuestion() {
 function checkAnswer(e) {
   console.log(questionIndex);
   if (e.target.textContent === questions[questionIndex].answer) {
-    score += 20;
+    score = score + 20;
+    scoreContainer.textContent = score;
     console.log("correct");
+    console.log(score);
   } else {
     time -= 20;
     console.log("incorrect");
@@ -115,10 +120,3 @@ var questions = [
     answer: "console.log",
   },
 ];
-
-// if answer is correct say Correct!
-// if answer is wrong say Wrong!
-// keep track of score
-// set a timer
-// at the end of quiz write initials to record score
-// click view highscores to view all scores
